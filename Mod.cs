@@ -27,6 +27,9 @@ namespace ShipAnywhere
 
         private void onKeyPress(object mod, EventArgsKeyPressed args)
         {
+            if (!Context.IsWorldReady || !Context.IsPlayerFree)
+                return;
+
             if ( args.KeyPressed == Config.OpenShippingBox.key )
             {
                 var func = typeof(Farm).GetMethod("shipItem", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
